@@ -26,7 +26,7 @@ const App = () => {
     try {
       const response = await axios.post("http://127.0.0.1:5000/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
-        responseType: "blob", // API trả về file Excel
+        responseType: "blob",
       });
 
       const filename = response.headers["content-disposition"]?.split("filename=")[1]?.replace(/\"/g, "") || "aggregated.xlsx";
@@ -44,19 +44,19 @@ const App = () => {
     <div style={{ padding: 20, textAlign: "center", maxWidth: 600, margin: "auto" }}>
       <Title level={3}>Tổng hợp Excel</Title>
       <Paragraph>
-        Chọn một hoặc nhiều tệp Excel để tải lên, hệ thống sẽ xử lý và tổng hợp kết quả.
+        Chọn một file Excel để tải lên, hệ thống sẽ xử lý và tổng hợp kết quả ở tất cả các sheet.
       </Paragraph>
       <Upload
         multiple
-        beforeUpload={() => false} // Không tự động tải lên
+        beforeUpload={() => false}
         onChange={({ fileList }) => setFileList(fileList)}
         fileList={fileList}
       >
-        <Button icon={<UploadOutlined />}>Chọn tệp Excel</Button>
+        <Button icon={<UploadOutlined />}>Chọn file Excel</Button>
       </Upload>
       <br />
       <Button type="primary" onClick={handleUpload} loading={loading} style={{ marginTop: 10 }}>
-        Gửi tệp lên API
+        Xử lý
       </Button>
       {downloadUrl && (
         <div style={{ marginTop: 20 }}>

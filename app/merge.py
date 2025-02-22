@@ -44,5 +44,6 @@ def aggregate_sales(file):
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         aggregated_df.to_excel(writer, index=False)
+
     output.seek(0)
     return output
