@@ -6,6 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: "0.0.0.0",
-    port: 8000
+    port: 8000,
+    strictPort: true,
+    allowedHosts: ["excel-webapp-56qz.onrender.com"]
   }
 })
